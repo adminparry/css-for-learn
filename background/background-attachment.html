@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>background-attachment</title>
+	<style>
+		.container{
+			display: flex;
+			justify-content:space-between;
+			min-width: 800px;
+			min-height: 600px;
+			border: 1px solid #ccc;
+			margin: 0 auto;
+			background-color:#e5eecc; 
+		}
+		.left,.right{
+			min-width: 400px;height: 100%;
+		}
+		.left table{
+			border-collapse: collapse;
+
+		}
+		.left table th{
+			border: 1px solid #d4d4d4;
+		    padding: 5px;
+		    padding-top: 7px;
+		    padding-bottom: 7px;
+		    vertical-align: top;
+		    text-align: left;
+		}
+	</style>
+	<style>
+
+		.flex{
+			display: block;
+			justify-content:space-between;
+			border: 1px solid #ccc;
+			height: 400px;
+			width: 600px;
+			background: white;
+		}
+		.flex span{
+			
+			border: 1px solid #ccc;
+			min-width: 100px;
+			height: 50px;
+			text-align: center;
+			line-height: 50px;
+		}
+		.item3,.item2,.item1{
+			display: block;
+			
+
+		}
+		.item1{
+			/*float: left;*/
+			/*background:red;*/
+		}
+		.item2{
+			/*background: green;*/
+		}
+		.item3{
+			/*background: yellow;*/
+			width: 200px;height: 200px;
+			background-image:url(http://www.w3school.com.cn/i/eg_bg_02.gif);
+			background-repeat:no-repeat;
+			background-attachment:fixed
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="container">
+
+		<div class="left">
+			<h1>background-attachment:</h1>
+			
+			<!-- div*6>label>input[type="radio"]+span{$} -->
+			<div><label><input name="flex" type="radio" checked="true"><span>scroll</span></label></div>
+			<div><label><input name="flex" type="radio"><span>fixed</span></label></div>
+			<div><label><input name="flex" type="radio"><span>inherit</span></label></div>
+			
+			
+			<table>
+				<tr>
+					<th>默认值:</th>
+					<th>scroll</th>
+				</tr>
+				<tr>
+					<th>继承:</th>
+					<th>no</th>
+				</tr>
+				<tr>
+					<th>版本:</th>
+					<th>CSS1</th>
+				</tr>
+				<tr>
+					<th>JavaScript 语法：</th>
+					<th>object.style.backgroundAttachment="fixed"</th>
+				</tr>
+			</table>
+		</div>
+		<div class="right">
+			<div class="item3"></div>
+			<h1>result:</h1>
+			<div class="flex">
+				<!-- span.item${$}*3 -->
+				
+				<span class="item1">1</span>
+				<span class="item2">2</span>
+				<span class="item3">3</span>
+			</div>
+		</div>
+	</div>
+	
+</body>
+<script>
+	document.querySelector('.left').onclick = function(ev){
+		const target = ev.target;
+
+		if(target.tagName.toLowerCase() == 'input'){
+			
+			document.querySelector('.flex .item1').style.backgroundAttachment = target.nextElementSibling.innerHTML;
+		}
+		
+	}
+</script>
+</html>

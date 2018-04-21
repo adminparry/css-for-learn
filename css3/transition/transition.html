@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>transiton</title>
+	<style>
+		.container{
+			display: flex;
+			justify-content:space-between;
+			min-width: 800px;
+			min-height: 600px;
+			border: 1px solid #ccc;
+			margin: 0 auto;
+			background-color:#e5eecc; 
+		}
+		.left,.right{
+			min-width: 400px;height: 100%;
+		}
+		.left table{
+			border-collapse: collapse;
+
+		}
+		.left table th{
+			border: 1px solid #d4d4d4;
+		    padding: 5px;
+		    padding-top: 7px;
+		    padding-bottom: 7px;
+		    vertical-align: top;
+		    text-align: left;
+		}
+	</style>
+	<style>
+
+		.flex{
+			display: block;
+			justify-content:space-between;
+			border: 1px solid #ccc;
+			height: 400px;
+			width: 600px;
+			background: white;
+
+			perspective: 11;
+			-webkit-perspective:11;
+		}
+		.flex span{
+			display: inline-block;
+			border: 1px solid #ccc;
+			/*min-width: 100px;*/
+			width: 100px;
+			height: 50px;
+			text-align: center;
+			line-height: 50px;
+		}
+		.item3,.item2,.item1{
+			display: inline-block;
+
+		}
+		.item1{
+			font-size: 14px;
+			background:red;
+		}
+		.item2{
+			background: green;
+		}
+		.item3{
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="left">
+			<h1>transiton:</h1>
+
+			<div><label><input name="flex" index="10086" type="radio" checked="true"><span>置空</span></label></div>
+			<div><label><input name="flex" index="5" type="radio" ><span>width 2s</span></label></div>
+			<div><label><input name="flex" index="1" type="radio" ><span>height 2s</span></label></div>
+			<div><label><input name="flex" index="2" type="radio" ><span>font-size .5s</span></label></div>
+			<div><label><input name="flex" index="3" type="radio" ><span>margin .6s</span></label></div>
+			<div><label><input name="flex" index="4" type="radio" ><span>all .6s</span></label></div>
+			
+			
+			
+			<table>
+				<tr>
+					<th>默认值:</th>
+					<th>all 0 ease 0</th>
+				</tr>
+				<tr>
+					<th>继承:</th>
+					<th>no</th>
+				</tr>
+				<tr>
+					<th>版本:</th>
+					<th>CSS3</th>
+				</tr>
+				<tr>
+					<th>JavaScript 语法：</th>
+					<th>object.style.transition="width 2s"</th>
+				</tr>
+			</table>
+		</div>
+		<div class="right">
+			<h1>result:</h1>
+			<div class="flex">
+				<!-- span.item${$}*3 -->
+				<span class="item1">1</span>
+				<span class="item2">2</span>
+				<span class="item3">3</span>
+			</div>
+		</div>
+	</div>
+	
+</body>
+<script>
+	const left = document.querySelector('.left');
+
+	
+
+	left.onclick = function(ev){
+		const target = ev.target || ev.srcElement;
+		
+
+		if(target.tagName.toLowerCase() == 'input'){
+			
+			const item1 = document.querySelector('.flex .item1');
+			
+			// if(!(item1.style = null)){
+				item1.style = null;
+				requestAnimationFrame(function(){
+
+
+					item1.style.transition = target.nextSibling.innerHTML;
+
+
+					console.log(target.getAttribute('index'));
+
+					switch(target.getAttribute('index')){
+
+						case '10086':
+						
+						// delete item1.style;
+						item1.style = null;
+
+						break;
+						case '5' :
+						item1.style.width = '126px';
+			
+						break;
+						case '1' :
+						item1.style.height = '26px';
+						break;
+						case '2' :
+						item1.style.fontSize = '26px';
+						break;
+						case '3' :
+						item1.style.margin = '26px';
+						break;
+						case '4' :
+						item1.style.width = '126px';
+						item1.style.height = '26px';
+						item1.style.fontSize = '26px';
+						item1.style.margin = '26px';
+						break;
+						defult:
+						console.log(target.index)
+
+					}
+				})
+			// } 
+
+			
+			
+
+			
+		}
+		
+	}
+</script>
+</html>

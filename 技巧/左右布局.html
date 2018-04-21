@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <title>Document</title>
+      <style>
+      *{margin: 0;padding: 0;}
+      .float,.relative{
+            border: 1px solid #aaa;overflow: hidden;position: relative;
+      }
+      .float .fl{
+            float: left;
+      }
+      .float .fr{
+            float: right;
+      }
+      .relative .left{
+            width: 100px;
+            background: pink;
+            text-align: center;
+            display: inline-block;
+            position: relative;
+            left: 0;
+            border: 1px solid #ccc;
+      }
+      .relative .right{
+            width: 100px;
+            background: orange;
+            text-align: center;
+            display: inline-block;
+            position: relative;
+            left: 100%;
+            margin-left: -200px;
+            border: 1px solid #ccc;
+      }
+      </style>
+</head>
+<body>
+      <div class="float">
+            <div class="fl">left</div>
+            <div class="fr">right</div>
+      </div>
+      <div class="relative">
+            <div class="left">left</div>
+            <div class="right">right</div>
+      </div>
+</body>
+</html>
