@@ -106,7 +106,7 @@
 			<div class="flex">
 				<!-- span.item${$}*3 -->
 				<span class="item">vertical-align</span>
-				<span class="item">vertical-align</span>
+				<span class="">vertical-align</span>
 				<span class="item">vertical-align</span>
 			</div>
 		</div>
@@ -121,7 +121,7 @@
 			
 			document.querySelectorAll('.flex .item').forEach(function(item,index){
 				
-				if(index > 0)return;
+				// if(index > 0)return;
 				item.style.verticalAlign = target.nextElementSibling.innerHTML;
 				console.log(target.nextElementSibling.innerHTML)
 			})
