@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>transition</title>
+	<style>
+		.container{
+			display: flex;
+			justify-content:space-between;
+			min-width: 800px;
+			min-height: 600px;
+			border: 1px solid #ccc;
+			margin: 0 auto;
+			background-color:#e5eecc; 
+		}
+		.left,.right{
+			min-width: 400px;height: 100%;
+		}
+		.left table{
+			border-collapse: collapse;
+
+		}
+		.left table th{
+			border: 1px solid #d4d4d4;
+		    padding: 5px;
+		    padding-top: 7px;
+		    padding-bottom: 7px;
+		    vertical-align: top;
+		    text-align: left;
+		}
+	</style>
+	<style>
+
+		.flex{
+			display: block;
+			justify-content:space-between;
+			border: 1px solid #ccc;
+			height: 400px;
+			width: 600px;
+			background: white;
+		}
+		.flex span{
+			display: inline-block;
+			border: 1px solid #ccc;
+			min-width: 100px;
+			height: 50px;
+			text-align: center;
+			line-height: 50px;
+		}
+		.item3,.item2,.item1{
+			display: inline-block;
+			width: 100px;
+			transition:width 2s;
+			-moz-transition:width 2s; /* Firefox 4 */
+			-webkit-transition:width 2s; /* Safari and Chrome */
+			-o-transition:width 2s; /* Opera */
+		}
+		.item1{
+		
+			background:red;
+		}
+		.item2{
+			background: green;
+		}
+		.item3{
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="left">
+			<h1>float:</h1>
+			
+			<!-- div*6>label>input[type="radio"]+span{$} -->
+			<div><label><input name="flex" type="radio" checked="true"><span>width 2s</span></label></div>
+			<div><label><input name="flex" type="radio"><span>width 2s</span></label></div>
+			<div><label><input name="flex" type="radio"><span>width 2s</span></label></div>
+			<div><label><input name="flex" type="radio"><span>width 2s</span></label></div>
+			
+			
+			<table>
+				<tr>
+					<th>默认值:</th>
+					<th>all 0 ease 0</th>
+				</tr>
+				<tr>
+					<th>继承:</th>
+					<th>no</th>
+				</tr>
+				<tr>
+					<th>版本:</th>
+					<th>CSS3</th>
+				</tr>
+				<tr>
+					<th>JavaScript 语法：</th>
+					<th>object.style.transition="width 2s"</th>
+				</tr>
+			</table>
+		</div>
+		<div class="right">
+			<h1>result:</h1>
+			<div class="flex">
+				<!-- span.item${$}*3 -->
+				<span class="item1">inline-block.item1</span>
+				<span class="item2">inline-block.tiem2</span>
+				<span class="item3">inline-block.tiem3</span>
+			</div>
+		</div>
+	</div>
+	
+</body>
+<script>
+	document.querySelector('.left').onclick = function(ev){
+		const target = ev.target;
+
+		if(target.tagName.toLowerCase() == 'input'){
+			document.querySelector('.flex .item1').style.transition = target.nextElementSibling.innerHTML;
+			document.querySelector('.flex .item1').style.width = '200px';
+			
+		}
+		
+	}
+</script>
+</html>
