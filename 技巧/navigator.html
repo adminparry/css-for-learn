@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<style>
+	*{margin: 0;padding: 0;list-style: none;}
+	.clearfix{
+		overflow: hidden;
+	}
+	.clearfix:after{
+		clear: both;
+	}
+	.nav{
+		border: 1px solid 
+	}
+	.nav li{
+		float: left;padding: 20px;position: relative;cursor: pointer;
+	}
+	.nav li:before{
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 100%;
+		
+		height: 100%;
+		border-bottom: 2px solid #000;
+		width: 0;
+		transition:all .2s;
+	
+
+	}
+	
+	.nav li:hover::before{
+		
+		width: 100%;
+		left: 0;
+	}
+	.nav li:hover ~ li::before{
+		left: 0;
+	}
+</style>
+</head>
+
+<body>
+	<ul class="nav clearfix">
+		<li>不可思议的css</li>
+		<li>导航栏</li>
+		<li>光标下划线跟随</li>
+		<li>pure css</li>
+		<li>nav underline</li>
+	</ul>
+</body>
+</html>
