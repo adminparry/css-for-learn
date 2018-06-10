@@ -57,6 +57,24 @@
       .columns .right{
             text-align: right;
       }
+      .justify{
+        text-align: justify;
+        /*text-align-last: justify; // 新增这一行*/
+        white-space: normal;
+        text-overflow:ellipsis 
+      }
+      .justify:after {
+        content: " ";
+        display: inline-block;
+        position: relative;
+        width: 100%;
+
+      }
+      .justify div{
+       
+        display:inline-block;
+        
+      }
       </style>
 </head>
 <body>
@@ -77,6 +95,10 @@
             <div class="right">right</div>
       </div> -->
       <div class="columns">
+            <div class="left">left</div>
+            <div class="right">right</div>
+      </div>
+      <div class="justify">
             <div class="left">left</div>
             <div class="right">right</div>
       </div>
