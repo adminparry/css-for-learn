@@ -1,6 +1,6 @@
 
 
-## 边缘发光效果
+## [边缘发光效果](http://parry.me/css-for-learn/master/%E6%8A%80%E5%B7%A7/%E8%BE%B9%E7%BC%98%E5%8F%91%E5%85%89.html)
 ``` bash
 <style>
 	.light{
@@ -18,7 +18,7 @@
 	<input class="light" type="text">
 </body>
 ```
-[example link](https://raw.githubusercontent.com/adminparry/css-for-learn/master/%E6%8A%80%E5%B7%A7/%E8%BE%B9%E7%BC%98%E5%8F%91%E5%85%89.html)
+
 
 ## 弹出框禁止滚动处理
 
