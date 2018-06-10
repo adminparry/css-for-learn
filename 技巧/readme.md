@@ -1,7 +1,7 @@
 
 
 ## [边缘发光效果](http://parry.me/css-for-learn/master/%E6%8A%80%E5%B7%A7/%E8%BE%B9%E7%BC%98%E5%8F%91%E5%85%89.html)
-``` html
+```html
 <style>
 	.light{
 		box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
