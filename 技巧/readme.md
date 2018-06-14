@@ -21,6 +21,40 @@
 
 
 ## 弹出框禁止滚动处理
+```html
+<style>
+	.mark{
+		position: fixed;
+		left: 0;top: 0;
+		width: 100%;height: 100%;
+		background: rgba(26,26,26,.65);
+		
+		display: none;
+
+	}
+	.content{
+		width: 200px;height: 200px;background: white;
+		border-radius: 5px;
+		position: absolute;
+		left: 50%;
+		top:50%;
+		transform:translate3d(-50%,-50%,0);
+		line-height: 200px;
+		text-align: center;
+	}
+</style>
+<body>
+	<button id="popup">popup</button>
+	<div class="mark">
+		<div class="content">
+			这就是弹出框中的内容
+		</div>
+	</div>
+</body>
+<script>
+	
+</script>
+```
 
 ## 多列布局
 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            background: #000;
+        }
+        div{
+            width: 1000px;
+            height: 200px;
+            border: 1px solid black;
+            margin: 0 auto;
+            font-size: 70px;
+            text-align: center;
+            line-height: 200px;
+            color:rgba(255,255,255,1);
+            background: -webkit-linear-gradient(-45deg,
+                #000 100px,
+                #FFF 140px,
+                #FFF 220px,
+                #000 260px);
+            background: linear-gradient(-45deg,
+                #000 100px,
+                #FFF 140px,
+                #FFF 220px,
+                #000 260px);
+            /*角度设定的是-45°*/
+	        background-position: -1000px,0px;
+	        background-repeat: no-repeat;
+	        background-clip: text;
+	         -webkit-background-clip: text;
+        }
+        div:hover{
+            background-position: 1000px,0px;
+            transition:all 1.5s;
+        }
+    </style>
+</head>
+<body>
+    <div>啦啦啦啦啦啦啦啦德玛西亚！！</div>
+</body>
+</html>
