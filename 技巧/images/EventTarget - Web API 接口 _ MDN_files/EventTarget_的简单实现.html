@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!-- saved from url=(0142)https://mdn.mozillademos.org/zh-CN/docs/Web/API/EventTarget$samples/EventTarget_%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0?revision=1189835 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <link href="./samples.37902ba3b7fe.css" rel="stylesheet" type="text/css">
+        
+        <title>EventTarget - EventTarget_的简单实现 - code sample</title>
+    </head>
+    <body>
+        
+        
+            <script>
+                var EventTarget = function() {
+  this.listeners = {};
+};
+
+EventTarget.prototype.listeners = null;
+EventTarget.prototype.addEventListener = function(type, callback) {
+  if(!(type in this.listeners)) {
+    this.listeners[type] = [];
+  }
+  this.listeners[type].push(callback);
+};
+
+EventTarget.prototype.removeEventListener = function(type, callback) {
+  if(!(type in this.listeners)) {
+    return;
+  }
+  var stack = this.listeners[type];
+  for(var i = 0, l = stack.length; i < l; i++) {
+    if(stack[i] === callback){
+      stack.splice(i, 1);
+      return this.removeEventListener(type, callback);
+    }
+  }
+};
+
+EventTarget.prototype.dispatchEvent = function(event) {
+  if(!(event.type in this.listeners)) {
+    return;
+  }
+  var stack = this.listeners[event.type];
+  event.target = this;
+  for(var i = 0, l = stack.length; i < l; i++) {
+      stack[i].call(this, event);
+  }
+};
+            </script>
+        
+    
+</body></html>

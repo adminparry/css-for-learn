@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0">
+<style>
+	*{margin: 0;padding: 0;list-style: none;}
+	.wraptab{
+		
+		margin: auto;
+		width: 320px;
+
+		overflow: hidden;
+	}
+	.wraptab ::-webkit-scrollbar {
+	    display: none;
+	}
+	.wraptab .top{
+		overflow-x: auto;
+		 -webkit-overflow-scrolling : touch;
+		letter-spacing: 10px;
+		white-space:nowrap;
+		background: blue;
+		padding: 10px;
+	}
+	.wraptab .top li{
+		position: relative;
+		display: inline-block;
+		color:white;
+		letter-spacing: 0px;
+		cursor: pointer;
+	}
+	.wraptab .top .active:before{
+		content: "";
+		display: inline-block;
+		position: absolute;
+		bottom: -2px;left: 0;
+		width: 100%;
+		border-bottom: 2px solid green;
+	}
+	.wraptab .top li:hover{
+		color:red;
+	}
+	.wraptab .content{
+		position: relative;
+		font-size: 0;
+		white-space:nowrap;
+
+	}
+	.wraptab .content li{
+		display: inline-block;
+		background: yellow;
+	    width: 320px;
+		height: 400px;
+		text-align: center;
+		line-height: 400px;
+		font-size: 16px;
+		
+	}
+	.wraptab .content li:first-child{
+		/*transform:translateX(-320px);*/
+	}
+</style>
+</head>
+
+<body>
+	<div class="wraptab">
+		<ul class="top">
+			<li>饭店</li>
+			<li>你家</li>
+			<li class="active">home</li>
+			<li>新闻</li>
+			<li>dom</li>
+			<li>饭店</li>
+			<li>你家</li>
+			<li>home</li>
+			<li>新闻</li>
+			<li>dom</li>
+		</ul>
+		<div class="contaner">
+			<ul class="content" >
+				<li>content1</li>
+				<li>content2</li>
+				<li>content3</li>
+				<li>content4</li>
+				<li>content5</li>
+			</ul>
+		</div>
+		
+	</div>
+</body>
+<script>
+void function(){
+
+
+	var top = document.querySelector('.top');
+	var content = document.querySelector('.content');
+	var contaner = document.querySelector('.contaner');
+
+	for (var i = 0; i < top.children.length; i++) {
+		top.children[i].setAttribute('index',i);
+		content.children[i] && content.children[i].setAttribute('index',i);
+
+	};
+	top.onclick = function(ev){
+		var target = ev.target;
+		
+		var tagName = target.tagName == 'LI';
+		if(tagName){
+			console.log(target.getBoundingClientRect());
+			
+			for (var i = 0; i < top.children.length; i++) {
+				top.children[i].className = '';
+			};
+			target.className = 'active';
+			// mapView(target.getAttribute('index'));
+		}
+	}
+	
+	contaner.ontouchstart  = function(ev){
+		ev.preventDefault();
+		var oneFgure = ev.touches[0];
+		var width  = ev.target.offsetWidth ;
+		var height = ev.target.offsetHeight;
+		var index = ev.target.getAttribute('index');
+		
+		var disStart = {
+			x:oneFgure.pageX + ev.target.offsetLeft,
+			y:oneFgure.pageY + ev.target.offsetTop,
+			ev:oneFgure
+		}
+		
+		var dir,dur,distance;
+		contaner.ontouchmove = function(ev){
+			var oneFgure = ev.touches[0];
+
+			var disMove = {
+				x:oneFgure.pageX + ev.target.offsetLeft ,
+				y:oneFgure.pageY + ev.target.offsetTop,
+				ev:oneFgure
+			}
+			dir = disMove.x - disStart.x;
+			distance = ~~dir + (-ev.target.offsetLeft);
+
+			// 首和尾是否可以拖动
+			// distance = distance + index*width > 0;
+			// var isLast = (content.children.length - 1)*content.offsetWidth < Math.abs(distance);
+			// var isFirst =  0 < distance;
+			// if(isLast || isFirst)return;
+
+			// content.style.transform = `translate3d(${distance}px,0,0)`
+			// content.style.transitionDuration = '0ms'
+			
+			content.animate([
+			  // keyframes
+			  { transform: `translate3d(${ev.target.offsetLeft}px,0,0)` }, 
+			  { transform: `translate3d(${distance}px,0,0)` }
+			], { 
+			  // timing options
+			  duration: 0,
+			  fill:'forwards',
+			  iterations: 1
+			});
+		}
+		contaner.ontouchend = function(ev){
+			var oneFgure = ev.touches[0];
+
+			if(dir > 0 && Math.abs(dir) > width/3 && index > 0){
+				dur = 'left';
+			}else if(dir < 0 && Math.abs(dir) > width/3 && index < content.children.length -1){
+				dur = 'right';
+			}else{
+				dur = 'cur';
+			}
+			switch(dur){
+				case 'left':
+				content.animate([
+				  // keyframes
+				  { transform: `translate3d(${distance}px,0,0)` }, 
+				  { transform: `translate3d(-${(+index-1)*width}px,0,0)` }
+				], { 
+				  // timing options
+				  duration: 300,
+				  easing:'cubic-bezier(.215,.61,.355,1.6)',
+				  fill:'forwards',
+				  iterations: 1
+				});
+				// content.style.transform = `translate3d(-${(+index-1)*width}px,0,0)`
+				break;
+				case 'right':
+
+				content.animate([
+				  // keyframes
+				  { transform: `translate3d(${distance}px,0,0)` }, 
+				  { transform: `translate3d(-${(+index + 1)*width}px,0,0)` }
+				], { 
+				  // timing options
+				  duration: 300,
+				   easing:'cubic-bezier(.215,.61,.355,1.6)',
+				  fill:'forwards',
+				  iterations: 1
+				});
+				// content.style.transform = `translate3d(-${(+index + 1)*width}px,0,0)`
+				break;
+				case 'cur':
+				content.animate([
+				  // keyframes
+				  { transform: `translate3d(${distance}px,0,0)` },  
+				  { transform: `translate3d(-${(+index)*width}px,0,0)` }
+				], { 
+				  // timing options
+				  duration: 300,
+				   easing:'cubic-bezier(.215,.61,.355,1.6)',
+				  fill:'forwards',
+				  iterations: 1
+				});
+				// content.style.transform = `translate3d(-${(+index)*width}px,0,0)`
+				break;
+
+
+			}
+			// content.style.transitionDuration = '300ms';
+			
+		}
+
+	}
+}()
+</script>
+</html>
