@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untitled Document</title>
+<style>
+	body{
+		height: 100%;
+		background: #ccc;
+	}
+	#child{
+		-webkit-overflow-scrolling:touch;
+	}
+	#itp{
+		position: absolute;
+		left: 50%;top: 50%;
+		font-size: 12rem;
+	}
+</style>
+</head>
+
+<body align="center">
+	<div id="itp"></div>
+	<h1>标题</h1>
+	<h2>标题</h2>
+	<h3>标题</h3>
+	<h4>标题</h4>
+	<h5>标题</h5>
+	<p>以下是滚动区域</p>
+	<div id="child" style="height:50rem;overflow:scroll;">
+		
+		<div>
+			<h1>标题</h1>
+			<h2>标题</h2>
+			<h3>标题</h3>
+			<h4>标题</h4>
+			<h5>标题</h5>
+			
+		</div>
+		<div>
+			<h1>标题</h1>
+			<h2>标题</h2>
+			<h3>标题</h3>
+			<h4>标题</h4>
+			<h5>标题</h5>
+			
+		</div>
+		<div>
+			<h1>标题</h1>
+			<h2>标题</h2>
+			<h3>标题</h3>
+			<h4>标题</h4>
+			<h5>标题</h5>
+			
+		</div>
+		<div>
+			<h1>标题</h1>
+			<h2>标题</h2>
+			<h3>标题</h3>
+			<h4>标题</h4>
+			<h5>标题</h5>
+			
+		</div>
+		<div>
+			<h1>标题</h1>
+			<h2>标题</h2>
+			<h3>标题</h3>
+			<h4>标题</h4>
+			<h5>标题</h5>
+			
+		</div>
+	</div>
+</body>
+<script>
+	var child = document.getElementById('child');
+    var itp = document.getElementById('itp');
+
+	document.onscroll = function(){
+		var a = document.body.offsetHeight;
+		a = a - child.offsetHeight;
+		var b = document.body.scrollTop || document.documentElement.scrollTop;
+		
+		itp.innerHTML = b + ',' + a
+		if(b > 165){
+			alert(165)
+			document.documentElement.scrollTop = 165;
+		}
+
+	}
+</script>
+</html>
