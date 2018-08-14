@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>justify-content</title>
+	<title>align-content</title>
 	<style>
 		.container{
 			display: flex;
@@ -32,7 +32,8 @@
 	<style>
 		.flex{
 			display: flex;
-			
+			flex-flow: row wrap;
+    		
 			border: 1px solid #ccc;
 			height: 400px;
 			width: 600px;
@@ -60,20 +61,22 @@
 <body>
 	<div class="container">
 		<div class="left">
-			<h1>justify-content:</h1>
+			<h1>align-content:</h1>
 			
 			<!-- div*6>label>input[type="radio"]+span{$} -->
-			<div><label><input name="flex" type="radio" checked="true"><span>flex-start</span></label></div>
+			<div><label><input name="flex" type="radio"><span>flex-start</span></label></div>
 			<div><label><input name="flex" type="radio"><span>flex-end</span></label></div>
 			<div><label><input name="flex" type="radio"><span>center</span></label></div>
 			<div><label><input name="flex" type="radio" ><span>space-between</span></label></div>
 			<div><label><input name="flex" type="radio"><span>space-around</span></label></div>
-			<div><label><input name="flex" type="radio"><span>initial</span></label></div>
+			<div><label><input name="flex" type="radio"  checked="true"><span>stretch</span></label></div>
+			<div><label><input name="flex" type="radio"  ><span>initial</span></label></div>
+			<div><label><input name="flex" type="radio"  ><span>inherit</span></label></div>
 			
 			<table>
 				<tr>
 					<th>默认值:</th>
-					<th>flex-start</th>
+					<th>stretch</th>
 				</tr>
 				<tr>
 					<th>继承:</th>
@@ -85,7 +88,7 @@
 				</tr>
 				<tr>
 					<th>JavaScript 语法：</th>
-					<th>object.style.justifyContent="space-between"</th>
+					<th>object.style.alignContent="center"</th>
 				</tr>
 			</table>
 		</div>
@@ -96,6 +99,12 @@
 				<span class="item1">inline-block.item1</span>
 				<span class="item2">inline-block.item2</span>
 				<span class="item3">inline-block.item2</span>
+				<span class="item3">inline-block.item2</span>
+				<span class="item3">inline-block.item2</span>
+				<span class="item3">inline-block.item2</span>
+				<span class="item3">inline-block.item2</span>
+				<span class="item3">inline-block.item2</span>
+				
 			</div>
 		</div>
 	</div>
@@ -107,7 +116,7 @@
 
 		if(target.tagName.toLowerCase() == 'input'){
 			
-			document.querySelector('.flex').style.justifyContent= target.nextElementSibling.innerHTML;
+			document.querySelector('.flex').style.alignContent= target.nextElementSibling.innerHTML;
 		}
 		
 	}

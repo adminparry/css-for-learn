@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>justify-content</title>
+	<title>flex-direction</title>
 	<style>
 		.container{
 			display: flex;
@@ -32,7 +32,7 @@
 	<style>
 		.flex{
 			display: flex;
-			
+
 			border: 1px solid #ccc;
 			height: 400px;
 			width: 600px;
@@ -60,20 +60,20 @@
 <body>
 	<div class="container">
 		<div class="left">
-			<h1>justify-content:</h1>
+			<h1>flex-direction:</h1>
 			
 			<!-- div*6>label>input[type="radio"]+span{$} -->
-			<div><label><input name="flex" type="radio" checked="true"><span>flex-start</span></label></div>
-			<div><label><input name="flex" type="radio"><span>flex-end</span></label></div>
-			<div><label><input name="flex" type="radio"><span>center</span></label></div>
-			<div><label><input name="flex" type="radio" ><span>space-between</span></label></div>
-			<div><label><input name="flex" type="radio"><span>space-around</span></label></div>
-			<div><label><input name="flex" type="radio"><span>initial</span></label></div>
+			<div><label><input name="flex" type="radio"><span>column</span></label></div>
+			<div><label><input name="flex" type="radio" checked="true"><span>row</span></label></div>
+			<div><label><input name="flex" type="radio" ><span>row-reverse</span></label></div>
+			<div><label><input name="flex" type="radio" ><span>column-reverse</span></label></div>
+
+			
 			
 			<table>
 				<tr>
 					<th>默认值:</th>
-					<th>flex-start</th>
+					<th>row</th>
 				</tr>
 				<tr>
 					<th>继承:</th>
@@ -85,7 +85,7 @@
 				</tr>
 				<tr>
 					<th>JavaScript 语法：</th>
-					<th>object.style.justifyContent="space-between"</th>
+					<th>object.style.flexDirection="column-reverse"</th>
 				</tr>
 			</table>
 		</div>
@@ -107,7 +107,7 @@
 
 		if(target.tagName.toLowerCase() == 'input'){
 			
-			document.querySelector('.flex').style.justifyContent= target.nextElementSibling.innerHTML;
+			document.querySelector('.flex').style.flexDirection= target.nextElementSibling.innerHTML;
 		}
 		
 	}
